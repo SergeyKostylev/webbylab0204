@@ -1,0 +1,18 @@
+{% extends'layout.html.twig' %}
+
+{% block content %}
+    <div class="text-center text-warning">
+        <h3>{{ getFlash() }}</h3>
+    </div>
+    <br>
+    <form method="post" enctype="multipart/form-data">
+        Уникальность фильмов не предусмотрена (в задании не указано).<br>
+        <div class="custom-file">
+            <input type="file"  class="btn btn-primary" name="import">
+        </div>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary">Импорт</button>
+    </form>
+
+{% endblock %}

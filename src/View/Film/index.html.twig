@@ -1,0 +1,56 @@
+{% extends'layout.html.twig' %}
+
+{% block content %}
+
+    <form method="get">
+        <div class="form-row">
+            <div class="form-group">
+                <input type="text" class="form-control" name="search" placeholder="Поиск...">
+            </div>
+            <div class="ml-3">
+                <select name="field" class="form-control">
+                    <option value="film" selected>По названию</option>
+                    <option value="actor">По актеру</option>
+                </select>
+            </div>
+        </div>
+    </form>
+
+<h1>{{ message }}</h1>
+
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Название</th>
+            <th scope="col">Год</th>
+            <th scope="col">Формат</th>
+            <th scope="col">Актеры</th>
+            <th scope="col">Действия</th>
+        </tr>
+        </thead>
+
+        <tbody>
+    {% for film in films %}
+
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ film.name }}</td>
+            <td>{{ film.year }}</td>
+            <td>{{ film.format }}</td>
+            <td>{{ film.actors }}</td>
+            <td>
+                <a href="{{ path('film-info', {id: film.id}) }}" class="text-primary">Инфо</a>
+                <span class="film-id" data-id="{{ film.id }}"></span>
+                <a href="#" class="text-danger delete-link">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

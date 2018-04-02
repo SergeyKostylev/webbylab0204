@@ -1,0 +1,19 @@
+{% extends'layout.html.twig' %}
+
+{% block content %}
+    {% if not film %}
+        <h1>Фильм не найден</h1>
+    {% else %}
+        <div class="float-left" style="margin-top: 23px">Фильм: </div><h1>{{ film.name }}</h1>
+            <hr>
+            <div>
+                <span>Год выпуска: </span><b>{{ film.year }}</b>
+            </div>
+            <div>
+                <span>Формат: </span><b>{{ film.format }}</b>
+            </div>
+            <div>
+                <span>Актеры: </span><b>{{ film.actors }}</b>
+            </div>
+    {% endif %}
+{% endblock %}

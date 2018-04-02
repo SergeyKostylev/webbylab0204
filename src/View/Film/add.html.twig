@@ -1,0 +1,37 @@
+{% extends'layout.html.twig' %}
+
+{% block content %}
+
+    <div class="text-center text-warning">
+        <h3>{{ getFlash() }}</h3>
+    </div>
+    <form method="post">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Название:</label>
+                <input type="text" name="name" class="form-control" value="{{ form.name }}">
+            </div>
+            <div class="form-group col-md-4">
+                <label>Формат:</label>
+                <select class="form-control" name="format">
+                    {% for format in formats %}
+                        <option {%  if form.format == format.id %} selected {% endif %} value="{{ format.id }}">{{ format.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Год:</label>
+                <input type="number" name="year" class="form-control" max="9999" min="1000" value="{% if form.year %}{{ form.year }}{% else %}2018{% endif %}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Актеры:</label>
+            <input type="text" name="actors" class="form-control" placeholder="..." value="{{ form.actors }}">
+            <small id="passwordHelpBlock" class="form-text text-muted">
+                Актеров перечислять чере ", "(запятая и пробел). Если такой актер существует дубликат создан не будет.
+            </small>
+        </div>
+        <button type="submit" class="btn btn-primary">Создать</button>
+    </form>
+
+{% endblock %}

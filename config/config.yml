@@ -1,0 +1,51 @@
+parameters:
+    database_user: 'root'
+    database_name: 'webbylab'
+    database_host: 'localhost'
+    database_password: ~
+    uploads_dir: 'uploads'
+    noreply_email: 'noreply@mvc.com'
+    some_api_key: '5sdf7hsf5s76f5hs7d5f'
+
+routing:
+    template:
+        pattern: /test/{one}/bar/{two}
+        controller: TestController
+        action: testAction
+        parameters:
+            one: '[0-9]+'
+            two: '[a-z]+'
+
+    homepage:
+        pattern: /
+        controller: DefaultController
+        action: indexAction
+
+    films-list:
+        pattern: /films-list
+        controller: FilmController
+        action: indexAction
+
+    films-add:
+        pattern: /film-add
+        controller: FilmController
+        action: addAction
+
+    film-info:
+        pattern: /film-info/{id}
+        controller: FilmController
+        action: infoAction
+        parameters:
+            id: '[0-9]+'
+
+    films-import:
+        pattern: /film-import
+        controller: FilmController
+        action: importAction
+
+    film-delete:
+        pattern: /film-delete/{id}
+        controller: FilmController
+        action: deleteAction
+        parameters:
+            id: '[0-9]+'
